@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
-    <link rel="stylesheet" href="Resources/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>Comment</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/Resources/lib/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 <body>
     <header>
@@ -27,6 +27,10 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="${pageContext.request.contextPath}/User/Comment" >Comment</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="${pageContext.request.contextPath}/logout" >Logout</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -34,13 +38,8 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            <div class="col-md-4">
-                <form method="post">
-                    <input type="text" name="login" placeholder="Login" class="form-control" required/><br>
-                    <input type="password" name="pass" placeholder="password" class="form-control"required /><br />
-                    <input type="submit" value="Login" class="btn btn-primary" />
-                </form>
-            </div>
+            <H1>Bienvenu ${userName}</H1>
+            <h2>votre commentaire est : ${comment}</h2>
         </main>
     </div>
 
@@ -50,7 +49,7 @@
         </div>
     </footer>
 
-    <script src="Resources/lib/jquery/dist/jquery.min.js"></script>
-    <script src="Resources/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/Resources/lib/jquery/dist/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/Resources/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

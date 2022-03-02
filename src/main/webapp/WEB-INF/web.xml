@@ -7,9 +7,33 @@
         <servlet-name>LoginP</servlet-name>
         <servlet-class>com.example.demo1.Controller.LoginC</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CommentServ</servlet-name>
+        <servlet-class>com.example.demo1.Controller.CommentServ</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowComment</servlet-name>
+        <servlet-class>com.example.demo1.Controller.ShowComment</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServ</servlet-name>
+        <servlet-class>com.example.demo1.Controller.LogoutServ</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServ</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowComment</servlet-name>
+        <url-pattern>/User/ShowComment</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginP</servlet-name>
-        <url-pattern>Login</url-pattern>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommentServ</servlet-name>
+        <url-pattern>/User/Comment</url-pattern>
     </servlet-mapping>
 
 </web-app>

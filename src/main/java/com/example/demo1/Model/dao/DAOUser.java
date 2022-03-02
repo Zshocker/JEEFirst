@@ -22,7 +22,7 @@ public class DAOUser implements IDAOUser{
     @Override
     public void Create(User user) {
         try {
-            PreparedStatement pr=Connexion.getCon().prepareStatement("insert into Users(login,passHash,email,name) values(?,?,?,?) ");
+            PreparedStatement pr=Connexion.getCon().prepareStatement("insert into users(login,passHash,email,name) values(?,?,?,?) ");
             pr.setString(1,user.get_login());
             pr.setString(2,user.get_passHash());
             pr.setString(3,user.get_email());
@@ -37,7 +37,7 @@ public class DAOUser implements IDAOUser{
     public Collection<User> Retrieve() {
         List<User> users=new LinkedList<User>();
         try {
-            PreparedStatement pr=Connexion.getCon().prepareStatement("select * from Users");
+            PreparedStatement pr=Connexion.getCon().prepareStatement("select * from users");
             ResultSet resultSet=pr.executeQuery();
             while (resultSet.next())
             {
@@ -53,7 +53,7 @@ public class DAOUser implements IDAOUser{
     @Override
     public void update(User user) {
         try {
-            PreparedStatement pr=Connexion.getCon().prepareStatement("Update Users SET login=?,passHash=?,email=?,name=?,dateCreated=? where id=? ");
+            PreparedStatement pr=Connexion.getCon().prepareStatement("Update users SET login=?,passHash=?,email=?,name=?,dateCreated=? where id=? ");
             pr.setString(1,user.get_login());
             pr.setString(2,user.get_passHash());
             pr.setString(3,user.get_email());
@@ -69,7 +69,7 @@ public class DAOUser implements IDAOUser{
     @Override
     public boolean delete(User user) {
         try {
-            PreparedStatement pr=Connexion.getCon().prepareStatement("Delete FROM Users where id=?");
+            PreparedStatement pr=Connexion.getCon().prepareStatement("Delete FROM users where id=?");
             pr.setInt(1,user.get_id());
             pr.executeUpdate();
             return true;
@@ -78,12 +78,12 @@ public class DAOUser implements IDAOUser{
             return false;
         }
     }
-    public User Authenticate(String login,String passHash){
+    public User Authenticate(String login,String passHashe){
         User user=null;
         try {
-            PreparedStatement pr=Connexion.getCon().prepareStatement("select * from Users where login=? and passHash=?");
+            PreparedStatement pr=Connexion.getCon().prepareStatement("select * from users where login=? and passhash=?");
             pr.setString(1,login);
-            pr.setString(2,passHash);
+            pr.setString(2,passHashe);
             ResultSet resultSet=pr.executeQuery();
             while (resultSet.next())
             {

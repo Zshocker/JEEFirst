@@ -2,12 +2,11 @@ package com.example.demo1.Controller;
 
 import com.example.demo1.Model.bo.User;
 import com.example.demo1.Model.dao.DAOUser;
-
+import javax.annotation.security.DeclareRoles;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Locale;
 
 public class LoginC extends HttpServlet {
     @Override
@@ -21,9 +20,15 @@ public class LoginC extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out=response.getWriter();
         String log=request.getParameter("login");
-        String pass=request.getParameter("pass");
-        User user= DAOUser.getDAOUser().Authenticate(log,User.HashPass(pass,"MD5"));
-        if(user!=null)out.println("<h2>Hello "+user.get_name()+"</h2>");
+        String pass=User.HashPass(request.getParameter("pass"),"MD5");
+        User user= DAOUser.getDAOUser().Authenticate(log,pass);
+        if(user!=null)
+        {
+            HttpSession session=request.getSession(true);
+            session.setAttribute("user",user);
+            response.sendRedirect(request.getContextPath() +"/User/Comment");
+
+        }
         else out.println("<h2>Wrong<h2>");
     }
 }

@@ -1,10 +1,16 @@
 package com.example.demo1.Model.bo;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.bind.DatatypeConverter;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.Locale;
 
 public class User {
     private int _id;
@@ -75,7 +81,7 @@ public class User {
         try {
             MessageDigest md=MessageDigest.getInstance(Algo);
             byte[] digest=md.digest(pass.getBytes("UTF-8"));
-            return DatatypeConverter.printHexBinary(digest);
+            return DatatypeConverter.printHexBinary(digest).toLowerCase(Locale.ROOT);
         } catch (NoSuchAlgorithmException e) {
              System.err.println(e);
             return null;
@@ -83,6 +89,17 @@ public class User {
             System.err.println(e);
             return null;
         }
+
+    }
+    public static User VerifieAuthed(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession se=request.getSession(false);
+        if(se!=null)
+        {
+            User user=(User) se.getAttribute("user");
+            if(user!=null)return  user;
+        }
+        response.sendRedirect(request.getContextPath()+ "/Login");
+        return null;
 
     }
 }
