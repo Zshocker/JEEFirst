@@ -8,12 +8,12 @@
         <servlet-class>com.example.demo1.Controller.LoginC</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CommentServ</servlet-name>
-        <servlet-class>com.example.demo1.Controller.CommentServ</servlet-class>
+        <servlet-name>ShoppingServ</servlet-name>
+        <servlet-class>com.example.demo1.Controller.ShoppingServ</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ShowComment</servlet-name>
-        <servlet-class>com.example.demo1.Controller.ShowComment</servlet-class>
+        <servlet-class>com.example.demo1.Controller.ShowPanier</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LogoutServ</servlet-name>
@@ -25,15 +25,15 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ShowComment</servlet-name>
-        <url-pattern>/User/ShowComment</url-pattern>
+        <url-pattern>/User/Panier</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginP</servlet-name>
         <url-pattern>/Login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CommentServ</servlet-name>
-        <url-pattern>/User/Comment</url-pattern>
+        <servlet-name>ShoppingServ</servlet-name>
+        <url-pattern>/User/Shopping</url-pattern>
     </servlet-mapping>
 
 </web-app>

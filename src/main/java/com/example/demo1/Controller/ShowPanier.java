@@ -6,13 +6,14 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-public class CommentServ extends HttpServlet {
+public class ShowPanier extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user= User.VerifieAuthed(request,response);
         if (user != null) {
             request.setAttribute("userName",user.get_name());
-            request.getRequestDispatcher( "/Resources/JSP/CommentPage.jsp").forward(request,response);
+            request.setAttribute("comment",request.getParameter("comment"));
+            request.getRequestDispatcher( "/Resources/JSP/ShowPanier.jsp").forward(request,response);
         }
 
     }

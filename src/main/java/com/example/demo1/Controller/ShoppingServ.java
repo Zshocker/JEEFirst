@@ -6,14 +6,13 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-public class ShowComment extends HttpServlet {
+public class ShoppingServ extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user= User.VerifieAuthed(request,response);
         if (user != null) {
             request.setAttribute("userName",user.get_name());
-            request.setAttribute("comment",request.getParameter("comment"));
-            request.getRequestDispatcher( "/Resources/JSP/CommentShowPage.jsp").forward(request,response);
+            request.getRequestDispatcher( "/Resources/JSP/ShoppingPage.jsp").forward(request,response);
         }
 
     }

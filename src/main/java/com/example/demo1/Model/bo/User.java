@@ -16,8 +16,11 @@ public class User {
     private int _id;
     private Date _dateCreated;
     private String _name,_login,_passHash,_email;
+    private Panier panier=new Panier();
 
-    public User() {
+    public User()
+    {
+
     }
 
     public User(int _id, Date _dateCreated, String _name, String _login, String _passHash, String _email) {
@@ -76,7 +79,16 @@ public class User {
     public void set_email(String _email) {
         this._email = _email;
     }
-    public static String HashPass(String pass,String Algo)
+
+    public Panier getPanier() {
+        return panier;
+    }
+
+    public void setPanier(Panier panier) {
+        this.panier = panier;
+    }
+
+    public static String HashPass(String pass, String Algo)
     {
         try {
             MessageDigest md=MessageDigest.getInstance(Algo);

@@ -2,7 +2,6 @@ package com.example.demo1.Controller;
 
 import com.example.demo1.Model.bo.User;
 import com.example.demo1.Model.dao.DAOUser;
-import javax.annotation.security.DeclareRoles;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
@@ -10,7 +9,8 @@ import java.io.PrintWriter;
 
 public class LoginC extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
         request.getRequestDispatcher("Resources/JSP/LoginPage.jsp").forward(request, response);
     }
 

@@ -1,4 +1,8 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.example.demo1.Model.dao.DAOLivre" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% DAOLivre daoLivre=DAOLivre.getInstance(); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,11 +42,18 @@
     <div class="container">
         <main role="main" class="pb-3">
             <H1>Bienvenu ${userName}</H1>
-            <div class="col-md-4">
-                <form method="get" action="${pageContext.request.contextPath}/User/ShowComment">
-                    <input type="text" name="comment" placeholder="Comment" class="form-control" required/><br>
-                    <input type="submit" value="Okey" class="btn btn-primary" />
+            <div class="col-md-9">
+                <table>
+                <form method="post" action="${pageContext.request.contextPath}/User/Panier">
+                    <c:forEach items="${daolivre.livres}" var="livre">
+                        <tr>
+                        <input type="checkbox" name="livres[]" value="${livre.id}"/><br>
+                        </tr>
+                    </c:forEach>
+                    <input type="submit" value="Add to cart" class="btn btn-primary" />
                 </form>
+
+                </table>
             </div>
         </main>
     </div>
