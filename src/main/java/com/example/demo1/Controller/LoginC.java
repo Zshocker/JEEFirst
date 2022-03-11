@@ -26,7 +26,7 @@ public class LoginC extends HttpServlet {
         {
             HttpSession session=request.getSession(true);
             session.setAttribute("user",user);
-            response.sendRedirect(request.getContextPath() +"/User/Comment");
+            response.sendRedirect(request.getContextPath() +"/User/Shopping");
 
         }
         else out.println("<h2>Wrong<h2>");

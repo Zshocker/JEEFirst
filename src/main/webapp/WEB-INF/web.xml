@@ -12,7 +12,7 @@
         <servlet-class>com.example.demo1.Controller.ShoppingServ</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ShowComment</servlet-name>
+        <servlet-name>ShowPanier</servlet-name>
         <servlet-class>com.example.demo1.Controller.ShowPanier</servlet-class>
     </servlet>
     <servlet>
@@ -24,7 +24,7 @@
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ShowComment</servlet-name>
+        <servlet-name>ShowPanier</servlet-name>
         <url-pattern>/User/Panier</url-pattern>
     </servlet-mapping>
     <servlet-mapping>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,8 +39,23 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            <H1>Bienvenu ${userName}</H1>
-            <h2>votre commentaire est : ${comment}</h2>
+            <H1>Bienvenu ${sessionScope.user._name}</H1>
+            <table class="table table-hover table-bordered">
+                <thead>
+                <th>ISBN</th>
+                <th>Name</th>
+                <th>Prix</th>
+                </thead>
+                <tbody>
+                <c:forEach items="${sessionScope.user.panier.livres}" var="livre">
+                    <tr>
+                        <td>${livre.isbn}</td>
+                        <td>${livre.name}</td>
+                        <td>${livre.prix} DH</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
         </main>
     </div>
 

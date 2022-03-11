@@ -1,6 +1,7 @@
 package com.example.demo1.Controller;
 
 import com.example.demo1.Model.bo.User;
+import com.example.demo1.Model.dao.DAOLivre;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

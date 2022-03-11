@@ -1,6 +1,7 @@
 package com.example.demo1.Controller;
 
 import com.example.demo1.Model.bo.User;
+import com.example.demo1.Model.dao.DAOLivre;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -18,5 +19,17 @@ public class ShowPanier extends HttpServlet {
 
     }
 
-
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        User user= User.VerifieAuthed(req,resp);
+        if (user != null)
+        {
+            String[] values=req.getParameterValues("livres[]");
+            for (String id : values)
+            {
+                user.getPanier().AddLivre(DAOLivre.getInstance().findByid(Integer.parseInt(id)));
+            }
+            req.getRequestDispatcher( "/Resources/JSP/ShowPanier.jsp").forward(req,resp);
+        }
+    }
 }

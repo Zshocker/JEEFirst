@@ -1,11 +1,13 @@
 package com.example.demo1.Model.bo;
 
+import java.util.Objects;
+
 public class Livre
 {
     private static int Count=0;
     private int id=++Count;
-    private String ISBN;
-    private String Nom;
+    private String isbn;
+    private String name;
     private double prix;
     private int qte;
     public int getId() {
@@ -16,20 +18,20 @@ public class Livre
         this.id = id;
     }
 
-    public String getISBN() {
-        return ISBN;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
+    public void setIsbn(String ISBN) {
+        this.isbn = ISBN;
     }
 
-    public String getNom() {
-        return Nom;
+    public String getName() {
+        return name;
     }
 
-    public void setNom(String nom) {
-        Nom = nom;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getPrix() {
@@ -40,9 +42,9 @@ public class Livre
         this.prix = prix;
     }
 
-    public Livre(String ISBN, String nom, double prix,int qt) {
-        this.ISBN = ISBN;
-        Nom = nom;
+    public Livre(String isbn, String nom, double prix,int qt) {
+        this.isbn = isbn;
+        name = nom;
         this.prix = prix;
         this.qte=qt;
     }
@@ -60,9 +62,22 @@ public class Livre
     }
     public Livre Clone()
     {
-        Livre livre=new Livre(ISBN,Nom,prix,0);
+        Livre livre=new Livre(isbn, name,prix,0);
         Count--;
         livre.id=id;
         return livre;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Livre livre = (Livre) o;
+        return id == livre.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
